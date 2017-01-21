@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { List, fromJS } from 'immutable';
+import { List } from 'immutable';
 
 import CatList from '../presentational/CatList';
 
@@ -15,7 +15,6 @@ export class CatsContainer extends React.PureComponent {
 }
 
 CatsContainer.propTypes = {
-  socket: React.PropTypes.object.isRequired,
   cats: React.PropTypes.instanceOf(List).isRequired,
 };
 

@@ -1,21 +1,30 @@
-import { fromJS } from 'immutable';
 import { combineReducers } from 'redux';
 
 import * as actions from '../actions/actions';
 
-export function tweets(state = fromJS([]), action) {
+import catData from '../cats';
+
+export function cats(state = catData, action) {
   switch (action.type) {
-    case actions.ADD_TWEET:
+    case actions.MEOW:
+      const catIndex =
+        state
+          .findIndex(cat => cat.get('id') === action.payload.catId);
+
       return state
-        .unshift(action.payload.tweet)
-        .slice(0, 6);
+        .updateIn([catIndex, 'meows'], meows => meows + 1);
+
+    case actions.DELETE_CAT:
+      return state
+        .filter(cat => cat.get('id') !== action.payload.catId);
+
     default:
       return state;
   }
 }
 
 const rootReducer = combineReducers({
-  tweets,
+  cats,
 });
 
 export default rootReducer;
