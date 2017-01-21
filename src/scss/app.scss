@@ -103,6 +103,9 @@ strong {
   float: right;
 }
 
+.p-a {
+  position: absolute;
+}
 /* @end positioning */
 
 
@@ -156,10 +159,20 @@ strong {
   transition: opacity 700ms ease-out;
 }
 
-.paw {
+.profile-controls {
   flex: 1;
   display: flex;
   justify-content: flex-end;
+
+  .control-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .paw {
+    position: relative;
+  }
 }
 
 /* @end card */

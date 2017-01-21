@@ -11,13 +11,15 @@ export const CatCard = ({ cat, meow, deleteCat }) =>
     <div className="text-content pd-2">
       <h2>{cat.get('name')}</h2>
       <div className="description pd-2">{cat.get('about')}</div>
-      <div onClick={() => deleteCat(cat.get('id'))}> Delete </div>
     </div>
-    <div
-      className="paw"
-    >
-      <Icon onClick={() => meow(cat.get('id'))} type="paw" className="pull-right" />
-      <span className="pd-2"> {!!cat.get('meows') && cat.get('meows')}</span>
+    <div className="profile-controls">
+      <div className="control-col">
+        <Icon type="exit" onClick={() => deleteCat(cat.get('id'))} />
+        <div className="control-col">
+          <span className="pd-2"> {!!cat.get('meows') && cat.get('meows')}</span>
+          <Icon onClick={() => meow(cat.get('id'))} type="paw" />
+        </div>
+      </div>
     </div>
   </div>;
 
