@@ -97,11 +97,21 @@ strong {
 /* @end padding */
 
 
+/* @group positioning */
+
+.pull-right {
+  float: right;
+}
+
+/* @end positioning */
+
+
 /* @group card */
 
 .card {
   display: flex;
   flex-direction: row;
+  // justify-content: space-around;
   background-color: $brand-light;
   color: $grey;
   font-size: $base-font-size;
@@ -146,6 +156,12 @@ strong {
   transition: opacity 700ms ease-out;
 }
 
+.paw {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* @end card */
 
 /* @group header */
@@ -155,8 +171,7 @@ strong {
   font-family: $header-font;
   font-size: $base-font-size * 4;
   font-weight: $font-regular;
-  color: $grey;
-  // color: $brand-light;
+  color: $brand-light;
 }
 
 /* @end header */
