@@ -4,8 +4,11 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 export const CatCard = ({ cat }) =>
   <div className="card">
-    <h4>{cat.get('name')}</h4>
-    <span>{cat.get('about')}</span>
+    <img className="avatar" src={cat.get('avatar')} alt="poster" />
+    <div className="text-content pd-2">
+      <h2>{cat.get('name')}</h2>
+      <div className="description pd-2">{cat.get('about')}</div>
+    </div>
   </div>;
 
 CatCard.propTypes = {

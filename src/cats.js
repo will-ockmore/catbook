@@ -6,7 +6,7 @@ const catData = fromJS([
     meows: 0,
     name: 'Sebastian',
     about: 'Loves mice and long walks along the wall',
-    avatar: 'http://www.cutestpaw.com/wp-content/uploads/2016/02/Meow..jpg'
+    avatar: 'http://www.cutestpaw.com/wp-content/uploads/2016/01/Watson-1.jpg'
   },
   {
     id: '1',
@@ -35,6 +35,13 @@ const catData = fromJS([
     name: 'Fred',
     about: 'Plz meow me!11!! Will meow u back',
     avatar: 'http://www.cutestpaw.com/wp-content/uploads/2016/02/Snow-day.jpg'
+  },
+  {
+    id: '5',
+    meows: 0,
+    name: 'Brian',
+    about: 'Think I\'m on the wrong site',
+    avatar: 'http://www.cutestpaw.com/wp-content/uploads/2013/02/My-girlfriend-and-I-found-this-little-guy-on-the-beach-yesterday..jpg'
   },
 ]);
 
