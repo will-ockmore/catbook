@@ -2,7 +2,7 @@ import React from 'react';
 import { List, Map } from 'immutable';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { Paw } from '../../images/images';
+import Icon from '../../images/images';
 
 
 export const CatCard = ({ cat, meow, deleteCat }) =>
@@ -15,9 +15,8 @@ export const CatCard = ({ cat, meow, deleteCat }) =>
     </div>
     <div
       className="paw"
-      onClick={() => meow(cat.get('id'))}
     >
-      <Paw className="pull-right" />
+      <Icon onClick={() => meow(cat.get('id'))} type="paw" className="pull-right" />
       <span className="pd-2"> {!!cat.get('meows') && cat.get('meows')}</span>
     </div>
   </div>;
