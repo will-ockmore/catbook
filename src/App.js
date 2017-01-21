@@ -1,20 +1,18 @@
 /* eslint-env browser */
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-
-import rootReducer from './reducers/reducers';
 
 import CatsContainer from './components/containers/CatsContainer';
 import Header from './components/presentational/Header';
 
 require('./scss/app.scss');
 
-const store = createStore(rootReducer);
 
 export class App extends React.Component {
 
   render() {
+    const { store } = this.props;
+
     return (
       <Provider store={store}>
         <div>
@@ -25,5 +23,9 @@ export class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  store: React.PropTypes.isRequired,
+};
 
 export default App;
