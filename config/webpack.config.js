@@ -77,6 +77,7 @@ module.exports = {
   plugins: [
     // necessary for hot reloading
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
 
     // creates index.html from template specified,
     // including script and style tags.

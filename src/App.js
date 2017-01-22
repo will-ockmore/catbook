@@ -25,7 +25,7 @@ export class App extends React.Component {
 }
 
 App.propTypes = {
-  store: React.PropTypes.isRequired,
+  store: React.PropTypes.object.isRequired,
 };
 
 export default App;
