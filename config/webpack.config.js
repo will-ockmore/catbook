@@ -1,29 +1,55 @@
-/* eslint-disable no-var, vars-on-top */
+/* eslint-disable no-var, vars-on-top, prefer-template, object-shorthand */
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 
-var env = require('./env');
 var paths = require('./paths.js');
 
-// config for webpack dev server.
-// see also: scripts/startDevServer.js
+var publicPath = '/';
 
 module.exports = {
   entry: [
-    paths.appIndexJs,
+    // special entry point for HMR
     'webpack/hot/dev-server',
+
+    // bundle for the dev server,
+    // and connect to the required endpoint
+    'webpack-dev-server/client?' + paths.devServerAddr,
+
+    // entry point for the app
+    paths.appIndexJs,
   ],
 
   devtool: 'eval',
 
   output: {
+    // where to output bundled files
     path: paths.buildDir,
+
+    // output bundle name
     filename: 'bundle.js',
+
+    // where webpack will serve files on our server.
+    // necessary for HMR to know where to find the bundled chunks.
+    publicPath: publicPath,
   },
 
+  devServer: {
+    // enable hot module replacement within dev server
+    hot: true,
+
+    // match the output path
+    contentBase: paths.buildDir,
+
+    // this should match the output publicPath
+    publicPath: publicPath,
+
+    port: paths.devServerPort,
+  },
+
+
   module: {
-    // First, run the linter.
-    // It's important to do this before Babel processes the JS.
+
+    // Run the linter.
     preLoaders: [
       {
         test: /\.(js|jsx)$/,
@@ -49,13 +75,7 @@ module.exports = {
   },
 
   plugins: [
-    // Makes some environment variables available to the JS code, for example:
-    // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
-    // It is absolutely essential that NODE_ENV was set to production here.
-    // Otherwise React will be compiled in the very slow development mode.
-    new webpack.DefinePlugin(env),
-
-    // necessary for hot reloading of css
+    // necessary for hot reloading
     new webpack.HotModuleReplacementPlugin(),
 
     // creates index.html from template specified,
@@ -65,12 +85,4 @@ module.exports = {
       inject: 'body',
     }),
   ],
-
-  // options to be passed to node-sass
-  sassLoader: {
-    // allow resolution of @import from this directory,
-    // so long relative imports are not necessary
-    includePaths: [paths.appScss],
-  },
-
 };

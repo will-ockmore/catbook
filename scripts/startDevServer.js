@@ -72,9 +72,10 @@ function runDevServer(port) {
     // Silence WebpackDevServer's own logs since they're generally not useful.
     // It will still show compile warnings and errors with this setting.
     clientLogLevel: 'none',
-    // use server address - served in iframe mode
-    // https://webpack.github.io/docs/webpack-dev-server.html#combining-with-an-existing-server
-    contentBase: paths.nodeServerAddr,
+    // match the output path
+    contentBase: config.output.path,
+    // this should match the output publicPath
+    publicPath: config.output.publicPath,
     // supress all log output from webpack -
     // it is dealt with above in setupCompiler
     quiet: true,
@@ -89,7 +90,7 @@ function runDevServer(port) {
     }
 
     logger(chalk.cyan('Starting the development server on port ') + chalk.yellow.bold(port));
-    openBrowser('http://localhost:' + port + '/webpack-dev-server/');
+    openBrowser('http://localhost:' + port + '/');
   });
 }
 
