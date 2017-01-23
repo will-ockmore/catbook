@@ -66,7 +66,7 @@ module.exports = {
         loader: 'babel',
       },
 
-      // sass compilation - see also the plugin further below
+      // sass compilation
       {
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
@@ -77,6 +77,8 @@ module.exports = {
   plugins: [
     // necessary for hot reloading
     new webpack.HotModuleReplacementPlugin(),
+
+    // shows us helpful module names when recompiling HMR
     new webpack.NamedModulesPlugin(),
 
     // creates index.html from template specified,

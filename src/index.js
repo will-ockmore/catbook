@@ -8,17 +8,18 @@ import rootReducer from './reducers/reducers';
 
 const store = createStore(rootReducer);
 
-const rootEl = document.getElementById('app');
 
 const render = () => {
   const App = require('./App').default;
 
-  ReactDOM.render(<App store={store} />, rootEl);
+  ReactDOM.render(
+    <App store={store} />,
+    document.getElementById('app')
+  );
 };
 
 if (module.hot) {
   // Support hot reloading of components
-  // and display an overlay for runtime errors
   module.hot.accept('./App', () => {
     render();
   });
